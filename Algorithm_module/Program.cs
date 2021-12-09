@@ -2,15 +2,16 @@
 
 namespace Algorithm_module
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Greetings();
-            ReadArray();
+            // Greetings();
+            //  ReadArray();
+            CheckAge();
         }
 
-        static void Greetings()
+        private static void Greetings() // линейный алгоритм
         {
             Console.WriteLine("Как Вас зовут?");
             var name = Console.ReadLine();
@@ -18,7 +19,7 @@ namespace Algorithm_module
             Console.WriteLine(greetings);
         }
 
-        static void ReadArray()
+        private static void ReadArray() // циклический алгоритм
         {
             Console.WriteLine("Сколько элементов будет в массиве?");
             int count = 0;
@@ -27,17 +28,32 @@ namespace Algorithm_module
             {
                 int.TryParse(Console.ReadLine(), out count);
                 array = new string[count];
-                for(int i = 0; i < array.Length; i++)
+                for (int i = 0; i < array.Length; i++)
                 {
                     Console.WriteLine($"Заполнить {i} элемент массива");
                     array[i] = Console.ReadLine(); 
                 }
+
                 Console.WriteLine("Все элементы записаны");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }         
+        } 
+
+        private static void CheckAge()
+        {
+            Console.WriteLine("Введите свой возраст");
+            var age = int.Parse(Console.ReadLine());
+            if (age > 13)
+            {
+                Console.WriteLine("Вы успешно зарегистрированы");
+            }
+            else
+            {
+                Console.WriteLine("Пользователи младше 14 лет не могут быть зарегистрированы");
+            }
         }
     }
 }
