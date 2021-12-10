@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algorithm_module
 {
-    class User
+    internal class User
     {
         public string Login { get; set; }
 
