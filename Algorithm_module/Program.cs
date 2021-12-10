@@ -1,59 +1,55 @@
 ﻿using System;
+using System.Threading;
 
 namespace Algorithm_module
 {
     internal class Program
     {
+        private static User[] users;
         public static void Main(string[] args)
         {
-            // Greetings();
-            //  ReadArray();
-            CheckAge();
-        }
-
-        private static void Greetings() // линейный алгоритм
-        {
-            Console.WriteLine("Как Вас зовут?");
-            var name = Console.ReadLine();
-            var greetings = "Привет," + name;
-            Console.WriteLine(greetings);
-        }
-
-        private static void ReadArray() // циклический алгоритм
-        {
-            Console.WriteLine("Сколько элементов будет в массиве?");
-            int count = 0;
-            string[] array;
-            try
+            users = new User[]
             {
-                int.TryParse(Console.ReadLine(), out count);
-                array = new string[count];
-                for (int i = 0; i < array.Length; i++)
+                new User() 
+                { 
+                    Login = "Vasya228", 
+                    Name = "Vasiliy", 
+                    IsPremium = false 
+                },
+                new User()
                 {
-                    Console.WriteLine($"Заполнить {i} элемент массива");
-                    array[i] = Console.ReadLine(); 
+                    Login = "Ghost",
+                    Name = "Igor",
+                    IsPremium = true
+                },
+                new User()
+                {
+                    Login = "Premium man",
+                    Name = "Inokentiy",
+                    IsPremium = false
                 }
+            };
 
-                Console.WriteLine("Все элементы записаны");
-            }
-            catch (Exception e)
+            for (int i = 0; i < users.Length; i++)
             {
-                Console.WriteLine(e.Message);
-            }         
-        } 
+                Console.WriteLine("Привет, " + users[i].Name);
+                if (!users[i].IsPremium) ShowAds();
+            }
+        }
 
-        private static void CheckAge()
+        private static void ShowAds()
         {
-            Console.WriteLine("Введите свой возраст");
-            var age = int.Parse(Console.ReadLine());
-            if (age > 13)
-            {
-                Console.WriteLine("Вы успешно зарегистрированы");
-            }
-            else
-            {
-                Console.WriteLine("Пользователи младше 14 лет не могут быть зарегистрированы");
-            }
+            Console.WriteLine("Посетите наш новый сайт с бесплатными играми free.games.for.a.fool.com");
+            // Остановка на 1 с
+            Thread.Sleep(1000);
+
+            Console.WriteLine("Купите подписку на МыКомбо и слушайте музыку везде и всегда.");
+            // Остановка на 2 с
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Оформите премиум-подписку на наш сервис, чтобы не видеть рекламу.");
+            // Остановка на 3 с
+            Thread.Sleep(3000);
         }
     }
 }
