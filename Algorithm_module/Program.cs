@@ -10,13 +10,13 @@ namespace Algorithm_module
             // Greetings();
             //  ReadArray();
             //CheckAge();
-            var rnd = new Random();
+            //var rnd = new Random();
 
-            int[] mas = new int[10000];
+            int[] mas = new int[5];
             int[] mas2 = new int[mas.Length];
             for (int i = 0; i < mas.Length; i++)
             {
-                mas[i] = rnd.Next(-90000, 1230000);
+                mas[i] = i * 10;
             }
 
             for (int i = 0; i < mas.Length; i++)
@@ -25,12 +25,24 @@ namespace Algorithm_module
             }
 
             BubbleSort(mas2);
-            Array.Reverse(mas2);
-            //Console.WriteLine(mas);
-            for (int i = 0; i < mas.Length; i++)
+            var elem = 15;
+            int index = GetIndex(mas2, elem);
+            Console.WriteLine(index);
+
+            var temp = 0;
+            for (int i = index; i < mas2.Length; i++)
             {
-                if(BinarySearch(ref mas2, mas[i]) == -1) Console.WriteLine(i);
+                temp = mas2[i];
+                mas2[i] = elem;
+                elem = temp;
             }
+
+            //Array.Reverse(mas2);
+            //Console.WriteLine(mas);
+            //for (int i = 0; i < mas.Length; i++)
+            //{
+            //    if(BinarySearch(ref mas2, mas[i]) == -1) Console.WriteLine(i);
+            //}
         }
 
         private static void Greetings() // линейный алгоритм
@@ -138,6 +150,20 @@ namespace Algorithm_module
             }
 
             return array;
+        }
+
+        private static int GetIndex(int [] mas, int element)
+        {
+            int i = 0;
+            for (i = 0; i < mas.Length; i++)
+            {
+                if(mas[i] > element)
+                {
+                    return i;
+                }
+            }
+
+            return i;
         }
     }
 }
