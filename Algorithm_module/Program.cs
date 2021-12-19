@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BenchmarkDotNet.Running;
+using System;
 using System.Threading;
 
 namespace Algorithm_module
@@ -7,35 +8,63 @@ namespace Algorithm_module
     {
         public static void Main(string[] args)
         {
+
+            Testing testing = new Testing();
+            var summary = BenchmarkRunner.Run<Testing>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // Greetings();
             //  ReadArray();
             //CheckAge();
             //var rnd = new Random();
 
-            int[] mas = new int[5];
-            int[] mas2 = new int[mas.Length];
-            for (int i = 0; i < mas.Length; i++)
-            {
-                mas[i] = i * 10;
-            }
+            //int[] mas = new int[5];
+            //int[] mas2 = new int[mas.Length];
+            //for (int i = 0; i < mas.Length; i++)
+            //{
+            //    mas[i] = i * 10;
+            //}
 
-            for (int i = 0; i < mas.Length; i++)
-            {
-                mas2[i] = mas[i];
-            }
+            //for (int i = 0; i < mas.Length; i++)
+            //{
+            //    mas2[i] = mas[i];
+            //}
 
-            BubbleSort(mas2);
-            var elem = 15;
-            int index = GetIndex(mas2, elem);
-            Console.WriteLine(index);
+            //BubbleSort(mas2);
+            //var elem = 15;
+            //int index = GetIndex(mas2, elem);
+            //Console.WriteLine(index);
 
-            var temp = 0;
-            for (int i = index; i < mas2.Length; i++)
-            {
-                temp = mas2[i];
-                mas2[i] = elem;
-                elem = temp;
-            }
+            //var temp = 0;
+            //for (int i = index; i < mas2.Length; i++)
+            //{
+            //    temp = mas2[i];
+            //    mas2[i] = elem;
+            //    elem = temp;
+            //}
 
             //Array.Reverse(mas2);
             //Console.WriteLine(mas);
@@ -165,5 +194,7 @@ namespace Algorithm_module
 
             return i;
         }
+
+        
     }
 }
