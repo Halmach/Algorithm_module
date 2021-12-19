@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 using System;
+using System.Text;
 using System.Threading;
 
 namespace Algorithm_module
@@ -8,15 +9,23 @@ namespace Algorithm_module
     {
         public static void Main(string[] args)
         {
+            // var summary = BenchmarkRunner.Run<Testing>();
+            Console.WriteLine("Ready to start");
+            Console.ReadKey();
+            Console.WriteLine("Start");
+            UseString(70000);
+            Console.WriteLine("Ready to switch");
+            Console.ReadKey();
+            Console.WriteLine("start stringBuiler");
+            UseStringBuilder(70000);
+            Console.WriteLine("Ready to end");
+            Console.ReadKey();
 
-            Testing testing = new Testing();
-            var summary = BenchmarkRunner.Run<Testing>();
 
 
 
 
-
-
+            
 
 
 
@@ -74,6 +83,31 @@ namespace Algorithm_module
             //}
         }
 
+        static string UseString(int n)
+        {
+            string value = "";
+
+            for (int i = 0; i < n; i++)
+            {
+                value += i.ToString();
+                value += " ";
+            }
+
+            return value;
+        }
+
+        static string UseStringBuilder(int n)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < n; i++)
+            {
+                builder.Append(i.ToString());
+                builder.Append(" ");
+            }
+
+            return builder.ToString();
+        }
         private static void Greetings() // линейный алгоритм
         {
             Console.WriteLine("Как Вас зовут?");
